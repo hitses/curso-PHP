@@ -4,7 +4,6 @@ require_once "conexion.php";
 
 class ModeloFormularios{
   # Registro
-
   static public function mdlRegistro($tabla, $datos) {
     $stmt = Conexion::conectar() -> prepare("INSERT INTO $tabla(nombre, email, password) VALUES (:nombre, :email, :password)");
     $stmt -> bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
@@ -16,6 +15,14 @@ class ModeloFormularios{
     } else {
       print_r(Conexion::conectar() -> errorInfo());
     }
+    $stmt -> close();
+    $stmt = null;
+  }
+  # Seleccionar registros
+  static public function mdlSeleccionarRegistros($tabla) {
+    $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla");
+    $stmt -> execute();
+    return $stmt -> fetchAll();
     $stmt -> close();
     $stmt = null;
   }

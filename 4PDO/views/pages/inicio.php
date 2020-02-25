@@ -1,32 +1,32 @@
+<?php
+$usuarios = ControladorFormularios::ctrSeleccionarRegistros();
+?>
+
 <div class="container-fluid">
     <div class="container">
       <table class="table table-borderless">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Correo electrónico</th>
+            <th scope="col">Fecha de registro</th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
+        <?php foreach ($usuarios as $key => $value): ?>
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td><?php echo $value["nombre"]; ?></td>
+            <td><?php echo $value["email"]; ?></td>
+            <td><?php echo $value["fecha"]; ?></td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-warning"><i class="fas fa-user-edit"></i></button>
+                <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+              </div>
+            </td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+        <?php endforeach ?>
         </tbody>
       </table>
     </div>
