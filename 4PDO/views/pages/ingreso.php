@@ -1,17 +1,27 @@
-<h1>Incio de sesión</h1>
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="d-flex justify-content-center text-center p-5">
+  <form class="p-5 bg-light" method="post">
+    <div class="form-group">
+      <label for="email">Correo electrónico</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
+        </div>
+        <input type="email" class="form-control" id="email" placeholder="Correo electrónico" name="ingresoEmail">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Contraseña</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+        </div>
+        <input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="ingresoPassword">
+      </div>
+    </div>
+    <?php
+      $ingreso = new ControladorFormularios();
+      $ingreso -> ctrIngreso();
+    ?>
+    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+  </form>
+</div>
