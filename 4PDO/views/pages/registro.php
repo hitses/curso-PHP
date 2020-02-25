@@ -6,7 +6,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
         </div>
-        <input type="text" class="form-control" id="nombre" placeholder="Introduce tu nombre" name="registroNombre">
+        <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" name="registroNombre">
       </div>
     </div>
     <div class="form-group">
@@ -15,7 +15,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
         </div>
-        <input type="email" class="form-control" id="email" placeholder="Introduce tu correo electrónico" name="registroEmail">
+        <input type="email" class="form-control" id="email" placeholder="Tu correo electrónico" name="registroEmail">
       </div>
     </div>
     <div class="form-group">
@@ -24,7 +24,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
         </div>
-        <input type="password" class="form-control" id="pwd" placeholder="Introduce tu contraseña" name="registroPassword">
+        <input type="password" class="form-control" id="pwd" placeholder="Tu contraseña" name="registroPassword">
       </div>
       <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tus datos con nadie más.</small>
     </div>
