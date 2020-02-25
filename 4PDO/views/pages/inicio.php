@@ -9,7 +9,8 @@ if (!isset($_SESSION['validarIngreso'])) {
         </script>';
   return;
 }
-$usuarios = ControladorFormularios::ctrSeleccionarRegistros();
+$usuarios = ControladorFormularios::ctrSeleccionarRegistros(null, null);
+
 ?>
 
 <div class="container-fluid">
@@ -31,7 +32,7 @@ $usuarios = ControladorFormularios::ctrSeleccionarRegistros();
             <td><?php echo $value["fecha"]; ?></td>
             <td>
               <div class="btn-group">
-                <button class="btn btn-warning"><i class="fas fa-user-edit"></i></button>
+                <a href="index.php?pagina=editar&id=<?php echo $value["id"]; ?>" class="btn btn-warning"><i class="fas fa-user-edit"></i></a>
                 <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
               </div>
             </td>

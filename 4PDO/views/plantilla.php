@@ -91,7 +91,7 @@ session_start();
     <div class="container">
       <?php
         if (isset($_GET["pagina"])) {
-          if($_GET["pagina"] == "registro" || $_GET["pagina"] == "ingreso" || $_GET["pagina"] == "inicio" || $_GET["pagina"] == "salir") {
+          if($_GET["pagina"] == "registro" || $_GET["pagina"] == "ingreso" || $_GET["pagina"] == "inicio" || $_GET["pagina"] == "salir" || $_GET['pagina'] == 'editar') {
             include "pages/".$_GET["pagina"].".php";
           } else {
             include "pages/error404.php";

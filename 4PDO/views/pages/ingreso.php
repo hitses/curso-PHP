@@ -4,7 +4,7 @@
       <label for="email">Correo electrónico</label>
       <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
+          <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope-square"></i></span>
         </div>
         <input type="email" class="form-control" id="email" placeholder="Tu correo electrónico" name="ingresoEmail">
       </div>
