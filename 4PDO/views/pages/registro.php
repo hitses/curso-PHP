@@ -30,7 +30,7 @@
     </div>
     <?php
       $registro = ControladorFormularios::ctrRegistro();
-      if ($registro == 'Usuario registrado correctamente') {
+      if ($registro == true) {
         echo '<script>
                 if (window.history.replaceState) {
                   window.history.replaceState (null, null, window.location.href);
