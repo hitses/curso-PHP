@@ -27,6 +27,7 @@
         $valor = $_POST["ingresoEmail"];
         $respuesta = ModeloFormularios::mdlSeleccionarRegistros($tabla, $item, $valor);
         if ($respuesta['email'] == $_POST['ingresoEmail'] && $respuesta['password'] == $_POST['ingresoPassword']) {
+          $_SESSION['validarIngreso'] = true;
           echo '<script>
                   if (window.history.replaceState) {
                     window.history.replaceState (null, null, window.location.href);
