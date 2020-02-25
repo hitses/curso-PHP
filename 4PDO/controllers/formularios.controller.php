@@ -75,6 +75,23 @@
         return $respuesta;
       }
     }
+    # Eliminar
+    public function ctrEliminarRegistro(){
+      if (isset($_POST['eliminarRegistro'])) {
+        $tabla = "registros";
+        $valor = $_POST['eliminarRegistro'];
+        $respuesta = ModeloFormularios::mdlEliminarRegistro($tabla, $valor);
+        if ($respuesta == true) {
+          echo '<script>
+                  if (window.history.replaceState) {
+                    window.history.replaceState (null, null, window.location.href);
+                  }
+                  window.location = "index.php?pagina=inicio";
+                </script>';
+        }
+        return $respuesta;
+      }
+    }
   }
 
 ?>
