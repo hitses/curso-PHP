@@ -30,13 +30,20 @@
     </div>
     <?php
       $registro = ControladorFormularios::ctrRegistro();
-      if ($registro == true) {
+      if ($registro != 'error') {
         echo '<script>
                 if (window.history.replaceState) {
                   window.history.replaceState (null, null, window.location.href);
                 }  
               </script>';
         echo '<div class="alert alert-success">Te has registrado correctamente</div>';
+      } else {
+        echo '<script>
+                if (window.history.replaceState) {
+                  window.history.replaceState (null, null, window.location.href);
+                }  
+              </script>';
+        echo '<div class="alert alert-danger">Error. No se permiten caracteres especiales</div>';
       }
     ?>
     <button type="submit" class="btn btn-primary">Enviar</button>
