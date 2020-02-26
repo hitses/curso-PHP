@@ -7,11 +7,12 @@
         if (preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST['registroNombre']) && preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST['registroEmail']) && preg_match('/^[0-9a-zA-ZñÑ]+$/', $_POST['registroPassword'])) {
           $tabla = "registros";
           $token = md5($_POST['registroNombre'].'+'.$_POST['registroEmail']);
+          $encriptarPassword = crypt($_POST["registroPassword"], '$5$rounds=5000$FertallforAnywim$');
           $datos = array(
             'token' => $token,
             "nombre" => $_POST["registroNombre"],
             "email" => $_POST["registroEmail"],
-            "password" => $_POST["registroPassword"]);
+            "password" => $encriptarPassword);
           $respuesta = ModeloFormularios::mdlRegistro($tabla, $datos);
           return $respuesta;
         } else {
@@ -33,7 +34,8 @@
         $item = 'email';
         $valor = $_POST["ingresoEmail"];
         $respuesta = ModeloFormularios::mdlSeleccionarRegistros($tabla, $item, $valor);
-        if ($respuesta['email'] == $_POST['ingresoEmail'] && $respuesta['password'] == $_POST['ingresoPassword']) {
+        $encriptarPassword = crypt($_POST["ingresoPassword"], '$5$rounds=5000$FertallforAnywim$');
+        if ($respuesta['email'] == $_POST['ingresoEmail'] && $respuesta['password'] == $encriptarPassword) {
           ModeloFormularios::mdlActualizarIntentosFalllidos($tabla, 0, $respuesta['token']);
           $_SESSION['validarIngreso'] = 'ok';
           echo '<script>
@@ -71,7 +73,7 @@
           if ($compararToken == $_POST['tokenUsuario']) {
             if (isset($_POST['actualizarPassword']) != '') {
               if (preg_match('/^[0-9a-zA-ZñÑ]+$/', $_POST['actualizarPassword'])){
-                $password = $_POST['actualizarPassword'];
+                $password = crypt($_POST["actualizarPassword"], '$5$rounds=5000$FertallforAnywim$');
               }
             } else {
               $password = $_POST['passwordActual'];
