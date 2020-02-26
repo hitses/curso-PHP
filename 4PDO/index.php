@@ -10,5 +10,3 @@ $conexion = Conexion::conectar();
 
 $plantilla = new ControladorPlantilla();
 $plantilla -> ctrTraerPlantilla();
-
-?>

@@ -63,5 +63,3 @@ class ModeloFormularios{
     $stmt = null;
   }
 }
-
-?>

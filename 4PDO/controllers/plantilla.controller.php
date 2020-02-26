@@ -5,5 +5,3 @@ class ControladorPlantilla{
     include "views/plantilla.php";
   }
 }
-
-?>

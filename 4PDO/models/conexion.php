@@ -12,5 +12,3 @@ class Conexion {
     return $link;
   }
 }
-
-?>
