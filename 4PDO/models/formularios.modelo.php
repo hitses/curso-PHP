@@ -63,4 +63,18 @@ class ModeloFormularios{
     $stmt -> close();
     $stmt = null;
   }
+  # Actualizar intntos fallidos
+  static public function mdlActualizarIntentosFalllidos($tabla, $valor, $token) {
+    $stmt = Conexion::conectar() -> prepare("UPDATE $tabla SET intentos_fallidos=:intentos_fallidos WHERE token = :token");
+    $stmt -> bindParam(":token", $token, PDO::PARAM_STR);
+    $stmt -> bindParam(":intentos_fallidos", $valor, PDO::PARAM_INT);
+
+    if($stmt -> execute()) {
+      return 'ok';
+    } else {
+      print_r(Conexion::conectar() -> errorInfo());
+    }
+    $stmt -> close();
+    $stmt = null;
+  }
 }

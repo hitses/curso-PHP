@@ -34,6 +34,7 @@
         $valor = $_POST["ingresoEmail"];
         $respuesta = ModeloFormularios::mdlSeleccionarRegistros($tabla, $item, $valor);
         if ($respuesta['email'] == $_POST['ingresoEmail'] && $respuesta['password'] == $_POST['ingresoPassword']) {
+          ModeloFormularios::mdlActualizarIntentosFalllidos($tabla, 0, $respuesta['token']);
           $_SESSION['validarIngreso'] = 'ok';
           echo '<script>
                   if (window.history.replaceState) {
@@ -42,12 +43,19 @@
                   window.location = "index.php?pagina=inicio";
                 </script>';
         } else {
-          echo '<script>
-                  if (window.history.replaceState) {
-                    window.history.replaceState (null, null, window.location.href);
-                  }
-                </script>';
-          echo '<div class="alert alert-danger">Usuario o contraseña incorrectos</div>';
+          if ($respuesta['intentos_fallidos'] < 2) {
+            $intentos_fallidos = $respuesta['intentos_fallidos'] + 1;
+            ModeloFormularios::mdlActualizarIntentosFalllidos($tabla, $intentos_fallidos, $respuesta['token']);
+            echo '<script>
+                    if (window.history.replaceState) {
+                      window.history.replaceState (null, null, window.location.href);
+                    }
+                  </script>';
+            echo '<div class="alert alert-danger">Usuario o contraseña incorrectos</div>';
+          } else {
+            // Añadir código de captcha aquí
+            echo '<div class="alert alert-warning">reCAPTCHA: demuestra que no eres un bot</div>';
+          }
         }
       }
     }
