@@ -11,7 +11,7 @@ class ModeloFormularios{
     $stmt -> bindParam(":password", $datos["password"], PDO::PARAM_STR);
 
     if($stmt -> execute()) {
-      return true;
+      return 'ok';
     } else {
       print_r(Conexion::conectar() -> errorInfo());
     }

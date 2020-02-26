@@ -20,7 +20,7 @@ $usuarios = ControladorFormularios::ctrSeleccionarRegistros(null, null);
           <tr>
             <th scope="col">Nombre</th>
             <th scope="col">Correo electrónico</th>
-            <th scope="col">Fecha de registro</th>
+            <th scope="col">Fecha de modificación</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>

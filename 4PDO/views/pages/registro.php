@@ -30,14 +30,14 @@
     </div>
     <?php
       $registro = ControladorFormularios::ctrRegistro();
-      if ($registro != 'error') {
+      if ($registro == 'ok') {
         echo '<script>
                 if (window.history.replaceState) {
                   window.history.replaceState (null, null, window.location.href);
                 }  
               </script>';
         echo '<div class="alert alert-success">Te has registrado correctamente</div>';
-      } else {
+      } else if ($registro == 'error') {
         echo '<script>
                 if (window.history.replaceState) {
                   window.history.replaceState (null, null, window.location.href);
