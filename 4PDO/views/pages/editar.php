@@ -31,6 +31,7 @@ if (isset($_GET['token'])) {
         <input type="password" class="form-control" id="pwd" placeholder="Nueva ontraseña" name="actualizarPassword">
         <input type="hidden" name="passwordActual" value="<?php echo $usuario['password']; ?>">
         <input type="hidden" name="tokenUsuario" value="<?php echo $usuario['token']; ?>">
+        <input type="hidden" name="idUsuario" value="<?php echo $usuario['id']; ?>">
       </div>
       <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tus datos con nadie más.</small>
     </div>

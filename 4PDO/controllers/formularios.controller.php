@@ -69,8 +69,8 @@
           $item = 'token';
           $valor = $_POST['tokenUsuario'];
           $usuario = ModeloFormularios::mdlSeleccionarRegistros($tabla, $item, $valor);
-          $compararToken = $token = md5($usuario['nombre'].'+'.$usuario['email']);
-          if ($compararToken == $_POST['tokenUsuario']) {
+          $compararToken = md5($usuario['nombre'].'+'.$usuario['email']);
+          if ($compararToken == $_POST['tokenUsuario'] && $_POST['idUsuario'] == $usuario['id']) {
             if (isset($_POST['actualizarPassword']) != '') {
               if (preg_match('/^[0-9a-zA-ZñÑ]+$/', $_POST['actualizarPassword'])){
                 $password = crypt($_POST["actualizarPassword"], '$5$rounds=5000$FertallforAnywim$');
@@ -79,8 +79,10 @@
               $password = $_POST['passwordActual'];
             }
             $tabla = "registros";
+            $actualizarToken = md5($_POST['actualizarNombre'].'+'.$_POST['actualizarEmail']);
             $datos = array(
-              "token" => $_POST['tokenUsuario'],
+              'id' => $_POST['idUsuario'],
+              "token" => $actualizarToken,
               "nombre" => $_POST['actualizarNombre'],
               "email" => $_POST['actualizarEmail'],
               "password" => $password);
